@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: ontap98fo_storage_efficiencies.html 
+keywords: FabricPool, Compression, FlexClone, Snapshot, compaction, deduplication, 
+summary: 本頁涵ONTAP 蓋的是NetApp FabricPool 9.8儲存效率、尤其是壓縮和NetApp支援技術相關的效率。 
+---
+= 儲存效率
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+儲存效率包括任何可減少儲存系統資料佔用實體容量的功能。其中包括下列項目：ONTAP
+
+* 資料壓縮
+* 資料壓縮
+* 重複資料刪除技術
+* NetApp FabricPool
+
+
+有時候、這些定義可能會延伸到：
+
+* NetApp FlexClone技術
+* NetApp Snapshot複本
+
+
+儲存效率對於減少所需購買的實體硬體數量、以降低儲存成本至關重要。在系統內嵌（不含作業系統）或後置（所有系統）上執行資料減量、對系統效能的影響最小。ONTAP AFF
+
+在更新版本的過程中、我們提供許多增強功能來提升儲存效率。ONTAP
+
+
+
+== FabricPool
+
+NetApp資料分層技術可將檔案系統中標示為「冷」的區塊、並將其整合至4 MB物件、以便運往雲端或S3儲存區。FabricPool我們的構想是、Cold資料可以使用高達儲存系統總容量80%的容量、因此、與其將所有容量保留在效能層上、不如將它移至成本較低的儲存解決方案。
+
+這一切都會透過ONTAP 您可以設定的分層原則自動發生在整個過程中、您可以利用「非使用中資料報告」、瞭解目前儲存系統中的冷資料量。如此一來、FabricPool 您就能評估整個過程是否能為您節省金錢。
+
+image:ontap98fo_image22.png["錯誤：缺少圖形影像"]
+
+當用戶端存取已階層化至雲端的檔案時、只有要求的區塊（而非整個檔案）才會回到效能層進行存取。
+
+如需FabricPool 更多關於功能的資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/17239-tr4598pdf.pdf["TR-4598：FabricPool 《最佳實務做法》"] 和 https://soundcloud.com/techontap_podcast/episode-268-netapp-fabricpool-and-s3-in-ontap-98["TR-4598：FabricPool 《最佳實務做法與Tech OnTap 非功能性Podcast》第268集：FabricPool 《NetApp產品特色》與《S3》（ONTAP 英文）（英文）（英文）（英文）（英文）（英文）"^]。
+
+支援下列功能：ONTAP FabricPool
+
+* *從HDD Aggregate分層。* ONTAP 在不使用此功能之前、FabricPool 只ONTAP 能在SSD Aggregate上、從無法從S時 到雲端的資料分層。現在、您可以使用從HDD集合體取得的功能進行分層。ONTAP FabricPool
+* *分層至ONTAP S3。* ONTAP 由於目前市面上普遍提供不支援的功能、現在可以使用ONTAP 支援功能從一個支援FabricPool 功能的不支援功能系統、分層至ONTAP 一個支援功能完善的不支援功能S3儲存區。這是一種將老化容量儲存設備用作FabricPool 支援的方法。此外、只要分層到同一個叢集、擷取時間就會比遍歷雲端網路連線更快。
+* *冷卻週期延長* ONTAP 在不含資料的情況下、資料會在冷卻後標示為冷、最長可達63天。藉由支援功能、您可將上限設定為183天。ONTAP這對偶爾存取的資料很有用、例如每季存取的資料、例如財務報告。
+* *物件標記。*當您分層至S3供應商、提供資訊生命週期原則來根據物件標記來管理資料時、ONTAP 即可將物件標記為階層式物件、並使用FabricPool 實物標記來整合至這些原則中。
+* *雲端擷取。*在某些情況下、您可能需要從雲端將所有階層式資料擷取回來。您現在可以執行從雲端擷取資料ONTAP 的作業、而不必存取所有資料、只要使用《解決方案與解決方案與解決方案的整合問題：
+
+
+
+
+== 壓縮
+
+部分資料壓縮變更有助於提升效能、並改善可壓縮資料集的資料減量比率。ONTAP
+
+壓縮的主要改變是將資料區分為冷分類和熱分類。Cold資料是指長期未存取的資料、而Hot資料則是經常存取的資料。這表示我們想要減少壓縮熱資料的力度、並更積極地壓縮冷資料。
+
+在支援的過程中、熱資料會使用8K壓縮群組即時壓縮。ONTAP此外、資料重複資料刪除技術會在壓縮前執行、以提升資料集的效率。
+
+然後使用更具競爭力的32K壓縮群組、在背景中再次壓縮Cold資料。這些變更意味著熱資料的效能會更好、所有資料的資料減量比率也會更高。
+
+link:ontap98fo_data_protection.html["下一步：資料保護"]

@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: ontap98fo_vmware_virtualization.html 
+keywords: FlexGroup, VMware, vSphere, NFS, 9.8, Virtual Storage Console, SnapCenter, Storage Replication Adapter, vVols 
+summary: 本頁說明ONTAP 適用於VMware虛擬化的更新整合與支援功能、包括將FlexGroup VMware NFS資料存放區配置為VMware NFS資料存放區、以單一可擴充的資料存放區來簡化資料存放區管理、並提供完整ONTAP 的VMware叢集功能。 
+---
+= VMware虛擬化
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+VMware整合與支援ONTAP 功能可透過FlexGroup 許多新功能（包括支援VMware資料儲存區）大幅提升。利用VMware NFS資料存放區、您可以配置一個作為VMware NFS資料存放區的Sforfvolume、以單一可擴充的資料存放區來簡化資料存放區管理、並提供完整的VMware vCenter叢集的強大功能。ONTAP FlexGroup ONTAPVMware vSphere 9.8版的《VMware vSphere 9.8版的參考資訊工具》提供許多新功能ONTAP 。
+
+這表示適用下列項目：
+
+* 已驗證的效能與放置方式
+* Interop資格
+* 增強的VAAI複本卸載功能、可在背景中更快完成
+* 虛擬儲存主控台支援功能、包括FlexGroup 提供功能不限的資源、調整大小及刪除、在個別VM上設定QoS、以及顯示VM的效能指標（延遲、IOPS及處理量）
+* NetApp SnapCenter 支援主要儲存設備備份與還原
+* 最多支援64TB VMFS LUN。藉由NetApp All SAN Array支援128TB LUNs/300TB FlexVol 的支援、您可以使用ONTAP VMware vSphere 9.8版的「VMware vCenter工具」中的「虛擬儲存主控台」來配置最多64TB的VMFS資料存放區。
+* 增加 https://www.vmware.com/in/products/site-recovery-manager.html["Site Recovery Manager（SRM）"^] 擴充。VMware vSphere 9.8版的《VMware vSphere的VMware vCenter工具》中的儲存複寫介面卡ONTAP 、可將資料存放區和保護群組的規模提升至512個。
+* VMware vSphere vVols檔案度量搭配REST API。REST API支援vVols檔案指標已新增ONTAP 至VMware 9.8、可讓虛擬儲存主控台在ONTAP 儀表板和報告中顯示vVols的靜態儲存效能指標。
+* https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.admin.doc/GUID-5651B2B8-6410-48AE-8882-6D51C85AC201.html["儲存複寫介面卡（SRA）"^] 支援SnapMirror同步
+* 支援 https://tanzu.vmware.com/tanzu["VMware Tanzu"^] 儲存設備
+* 改善對vVols的支援、包括增強的SAN vVol重新平衡命令、以及儲存功能設定檔的增強功能。如需最新VMware虛擬化支援的詳細資訊、請參閱下列資源：
+* https://soundcloud.com/techontap_podcast/episode-263-virtualization-in-ontap-fall-2020-update["第263集：《以虛擬化技術為特色–2020年秋季》Tech OnTap ONTAP"^]
+* https://www.netapp.com/us/media/tr-4597.pdf["TR-4597：VMware vSphere搭配ONTAP VMware"^]
+

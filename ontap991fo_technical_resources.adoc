@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: ontap991fo_technical_resources.html 
+keywords:  
+summary:  
+---
+= 技術資源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+本節涵蓋詳細說明本文件所述功能的可用技術資源。
+
+
+
+== 技術報告
+
+* TR-4067：NetApp ONTAP 《Sure NFS最佳實務做法與實作指南》
++
+https://www.netapp.com/us/media/tr-4067.pdf["https://www.netapp.com/us/media/tr-4067.pdf"^]
+
+* TR-4515：ONTAP AFF 《支援所有SAN陣列系統》
++
+https://www.netapp.com/pdf.html?item=/media/10379-tr4515pdf.pdf["https://www.netapp.com/pdf.html?item=/media/10379-tr4515pdf.pdf"^]
+
+* TR-4526：使用NetApp SnapLock 功能的符合法規的WORM儲存設備
++
+https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf["https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf"^]
+
+* TR-4569：ONTAP 《資訊安全強化指南》（英文）9
++
+https://www.netapp.com/pdf.html?item=/media/10674-tr4569pdf.pdf["https://www.netapp.com/pdf.html?item=/media/10674-tr4569pdf.pdf"^]
+
+* TR-4571：NetApp FlexGroup 《NetApp全區最佳實務做法》
++
+https://www.netapp.com/us/media/tr-4571.pdf["https://www.netapp.com/us/media/tr-4571.pdf"^]
+
+* TR-4597：VMware vSphere搭配ONTAP VMware
++
+https://www.netapp.com/us/media/tr-4597.pdf["https://www.netapp.com/us/media/tr-4597.pdf"^]
+
+* TR-4598：FabricPool 《最佳實務做法》
++
+https://www.netapp.com/us/media/tr-4598.pdf["https://www.netapp.com/us/media/tr-4598.pdf"^]
+
+* TR-4684：使用NVMe / FC實作及設定現代化SAN
++
+https://www.netapp.com/pdf.html?item=/media/10681-tr4684.pdf["https://www.netapp.com/pdf.html?item=/media/10681-tr4684.pdf"^]
+
+* TR-4678：資料保護與備份- FlexGroup 不全區
++
+https://www.netapp.com/us/media/tr-4678.pdf["https://www.netapp.com/us/media/tr-4678.pdf"^]
+
+* TR-4689：MetroCluster 《SView IP解決方案架構與設計》
++
+https://www.netapp.com/us/media/tr-4689.pdf["https://www.netapp.com/us/media/tr-4689.pdf"^]
+
+* TR-4705：NetApp MetroCluster 解決方案架構與設計
++
+https://www.netapp.com/pdf.html?item=/media/13480-tr4705pdf.pdf["https://www.netapp.com/pdf.html?item=/media/13480-tr4705pdf.pdf"^]
+
+* TR-4743：FlexCache 《不ONTAP 實的
++
+https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf["https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf"^]
+
+* TR-4814：S3的ONTAP 最佳實務做法
++
+https://www.netapp.com/pdf.html?item=/media/17219-tr4814pdf.pdf["https://www.netapp.com/pdf.html?item=/media/17219-tr4814pdf.pdf"^]
+
+
+
+
+
+== Podcast
+
+* 《》第288集：《系統管理程式9.9.1》Tech OnTap ONTAP
++
+https://soundcloud.com/techontap_podcast/episode-288-ontap-system-manager-991["https://soundcloud.com/techontap_podcast/episode-288-ontap-system-manager-991"^]
+
+

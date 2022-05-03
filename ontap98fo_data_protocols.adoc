@@ -1,0 +1,190 @@
+---
+sidebar: sidebar 
+permalink: ontap98fo_data_protocols.html 
+keywords: NAS Protocol, NFS, SMB/CIFS, FlexCache Volume, FlexGroup, Async Delete, SAN, Persistent Ports, NVMe/FC, S3 
+summary: 本頁涵蓋資料傳輸協定、可讓用戶端和終端使用者與ONTAP 支援資料存取的NetApp儲存系統互動。 
+---
+= 資料傳輸協定
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+資料傳輸協定是指用戶端和終端使用者與NetApp ONTAP 支援儲存系統互動以存取資料的方法。NetApp ONTAP 支援多個正式支援的介面、可在相同的儲存平台中存取資料、包括：
+
+* NAS
+* SAN
+* S3
+
+
+藉由支援功能、可提升各種功能、提升各項功能的性能。ONTAP ONTAP
+
+
+
+== NAS傳輸協定增強功能
+
+網路附加儲存（NAS）傳輸協定是指NFS和SMB/CIFS等檔案型傳輸方法。下列增強功能已新增ONTAP 至適用於NAS傳輸協定支援的功能、以及適用於NAS的功能、例如NetApp FlexGroup 的更新功能和FlexCache 更新功能。
+
+
+
+=== NFS增強功能
+
+支援下列NFS增強功能：ONTAP
+
+* * NFSv4.2.*提供基本NFSv4.2傳輸協定支援、不含NFSv4.2標籤等功能。NFSv4.2會在啟用NFSv4.1時啟用。
+* * Qtree服務品質（QoS）*。*提供一種方法、讓儲存管理員將QoS上限和下限套用至ONTAP 效益管理系統中的qtree。這項功能目前僅適用於REST API和命令列、不含調適性QoS支援、而且僅適用於NFS。
+
+
+
+
+=== SMB/CIFS增強功能
+
+供應下列SMB/CIFS增強功能：ONTAP
+
+* * SMB3-Encrypted DC connections。* SMB DC連線的有線加密。
+* *在設定擁有者（-map- sid-to - uid-on -Set-Owner*）上將SID對應至UID。*此選項可控制ONTAP 在設定檔案和資料夾的擁有權時、是否將Windows SID對應至UNIX UID。新增此選項可改善Active Directory伺服器負載增加的客戶資料移轉體驗。預設值為「true」。（修正錯誤 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/1153207["1153207."^]）
+* *在NFSv4_ACL繼承時設定Modebits（啟用nfsv4acl的-is繼承模式）*。當在NFSv4 ACL移除預設的「擁有者」、「群組」和「每個人」ACL、或是那些ACL未設定繼承旗標的目錄中建立SMB檔案時、即可支援多重傳輸協定NAS互動。預設值為「假」。（修正 https://mysupport.netapp.com/site/bugs-online/product/ONTAP/BURT/820848["錯誤820848"^]）
+
+
+
+
+=== 擴充功能FlexCache
+
+NetApp FlexCache 的不多餘的虛擬快取是由NetApp FlexGroup 的功能區所組成。這些快取會指向來源磁碟區、並在用戶端要求的情況下、將資料填入快取中、以便在執行ONTAP的任何位置（無論是雲端、邊緣或資料中心）提供快速、本地化的存取、以提供真正的全域命名空間。
+
+image:ontap98fo_image19.png["錯誤：缺少圖形影像"]
+
+如需FlexCache 更多有關本功能的資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf["TR-4743：FlexCache 《不ONTAP 實的"^]。
+
+供應下列功能的更新功能：ONTAP FlexCache
+
+* * SMB/CIFS支援。* NetApp FlexCache 支援NFSv3和SMB用戶端的快取存取、以及多重傳輸協定NAS資料存取。針對讀取密集的工作負載、可將資料用於多站台分散式本地化檔案鎖定。FlexCache
+* *提升FlexCache 的支援率* ONTAP 《Sfan-out比率》*《Sf9.8》提供100：1的連出比率。此比例先前為10：1。
+* *包含SnapMirror二線來源的支援Volume *。*目前、支援SnapMirror二線磁碟區、可卸載一線儲存系統的讀取作業、並提供地理上更為本地化的來源磁碟區。FlexCache FlexCache
+* *區塊層級的快取無效。*從快取中移除變更的資料時、不需要驗證整個檔案、現在只會移除已變更的區塊。如此可節省容量和WAN流量負載。
+* *預先填入快取。*如果磁碟區中的目錄經常存取、您現在可以使用該目錄的內容預先填入快取、以消除初始用戶端存取的延遲。
+
+
+
+
+=== 擴充功能FlexGroup
+
+NetApp的VMware不間斷橫向擴充NAS解決方案可在單一命名空間中提供高達20PB和4000億個檔案、同時針對高擷取工作負載提供自動負載平衡的平行處理功能、將容量、效能和簡易性完美結合。FlexGroup ONTAP
+
+image:ontap98fo_image20.png["錯誤：缺少圖形影像"]
+
+如需FlexGroup 更多有關本功能的資訊、請參閱 https://www.netapp.com/us/media/tr-4571.pdf["TR-4571：NetApp FlexGroup 《NetApp全區最佳實務做法》"^]。
+
+供應下列功能的更新功能：ONTAP FlexGroup
+
+* * 1、023 Snapshot支援。* NetApp FlexGroup 支援的資料區現在每個Volume最多可有1、023個Snapshot複本。有了額外的Snapshot複本、FlexGroup 作為歸檔目的地的SingdVolume將變得更可行、可以保留更多的常用快照、而且現在可以支援FlexVol Snapshot複本ID大於255的版本轉換。
+* * NDMP增強功能。* FlexGroup NDMP支援支援功能已新增ONTAP 至更新版本9.7、但缺少下列功能選項：
++
+** 更新支援NDMP ONTAP
+** 排除
+** 可重新啓動的備份擴展（RBE）
+** 多重樹狀結構名稱
+** 效能增強
++
+如需FlexGroup 更多關於功能區和NDMP的資訊、請參閱 https://www.netapp.com/us/media/tr-4678.pdf["TR-4678：資料保護與備份- FlexGroup 不全區"^]。
+
+
+
+* *支援7MTT Volume *。*在執行緒9.8之前、您無法將已從7-Mode移轉至VMware Volume的版本轉換為VMware Volume。FlexGroup ONTAP FlexVol FlexGroup部分9.8將此限制解除。ONTAP
+* *主動調整大小。*主動調整大小是一項容量管理功能、可在FlexGroup VMware成員磁碟區中維持可用空間緩衝區、以鼓勵一致的效能和容量分配。
+* *檔案複製。*您現在可以FlexGroup 透過VAAI複製卸載支援、使用VMware vSphere複製以支援整個VMware Volume中的檔案。不過、目前不支援使用REST API或CLI進行檔案複製。
+* * VMware資料存放區支援* ONTAP VMware資料存放FlexGroup 區現在正式支援將VMware資料存放區當作可擴充的VMware資料存放區。這表示：
++
+** 已驗證的效能與放置方式
+** Interop資格
+** 虛擬儲存主控台支援
+** NetApp SnapCenter 支援功能
+
+
+
+
+
+
+=== 非同步刪除
+
+非同步刪除功能可讓儲存管理員從CLI刪除目錄、藉此略過網路延遲。
+
+如果您曾經嘗試透過NFS或SMB刪除其中含有許多檔案的目錄、您就知道這種情況會多麼痛苦。每項作業都必須透過您使用的NAS傳輸協定、經由網路傳輸、ONTAP 然後由處理器執行這些要求並做出回應。視可用的網路頻寬、用戶端規格或儲存系統而定、此程序可能需要很長時間。非同步刪除可節省大量時間、讓用戶端更快恢復工作。
+
+如需非同步刪除的詳細資訊、請參閱 https://www.netapp.com/us/media/tr-4571.pdf["TR-4751：NetApp FlexGroup 《NetApp產品特色》最佳實務做法"^]。
+
+
+
+== SAN增強功能
+
+儲存區域網路（SAN）傳輸協定指的是以區塊為基礎的資料傳輸方法、例如FCP、iSCSI和NVMe over Fibre Channel。下列增強功能已新增ONTAP 至適用於SAN傳輸協定支援的版本9.8。
+
+
+
+=== All SAN Array（ASA 僅限支援SAN陣列）
+
+推出全新的專屬SAN平台、ONTAP 稱為 https://www.netapp.com/data-storage/san-storage-area-network/documentation/["ASA"^]的目標是簡化第1層SAN部署、同時提供主動/主動式SAN連線方法、大幅縮短SAN環境中的容錯移轉時間。
+
+如需ASA 更多關於此功能的資訊、請參閱： https://www.netapp.com/data-storage/san-storage-area-network/documentation/["All SAN Array文件資源"^]。
+
+更新版的功能包括下列功能：ONTAP ASA
+
+* *更大的LUN和FlexVol 資料不全的Volume大小。ASA *目前可在12TB配置LUN、FlexVol 而資料不全的Volume則可達300TB。
+* * MetroCluster 支援不支援IP * ASA 。*目前可用於IP網路上的站台容錯移轉。
+* * SnapMirror營運不中斷（SMBC）支援。ASA *支援SnapMirror營運不中斷。Xref
+* *主機生態系統擴充。*支援HP-UX、Solaris及AIX。請參閱 https://mysupport.netapp.com/matrix/["互通性對照表"^] 以取得詳細資料。
+* *支援A800與A250平台。*
+* *簡化系統管理程式中的資源配置。*
+
+
+
+
+=== 持續連接埠
+
+更新稱為「持續連接埠」的功能、可改善容錯移轉時間。ASA持續連接埠ONTAP 在整個過程中提供更多恢復能力和持續資料存取功能、讓SAN主機連線ASA 到一個支援中心。每個ASA 節點都維護陰影光纖通道生命。這項功能是ONTAP 讓ASA 人瞭解到如何讓SAN容錯移轉時間更短、更能滿足需求的關鍵。這些LIF會維持相同的合作夥伴LIF ID、但仍維持待命模式。如果發生容錯移轉、且FC LIF必須移轉至合作夥伴節點、則陰影LIF會變成新的路徑、而非變更ID（在主機交涉該變更時、可能會增加容錯移轉時間）。主機在相同的路徑上以相同的ID繼續I/O、而不會發出下拉通知、也不需要任何額外的組態。
+
+下圖提供持續連接埠的容錯移轉範例。
+
+image:ontap98fo_image21.png["錯誤：缺少圖形影像"]
+
+
+
+=== NVMe / FC
+
+NVMe是一種全新的SAN傳輸協定、可透過傳統FCP和iSCSI來改善區塊工作負載的延遲和效能。
+
+這篇部落格很好地介紹了： https://blog.netapp.com/nvme-over-fabric/["當您在架構上實作NVMe時、Fabric真的很重要"^]。
+
+NetApp推出ONTAP 支援以支援支援支援支援以支援NetApp為基礎的NVMe over Fibre Channel、並在每個版本中加入功能增強功能。BIOS 9.8新增下列項目：ONTAP
+
+* *採用FCP和iSCSI的同一SVM上有NVMe / FC。*現在、您可以在與其他SAN傳輸協定相同的SVM上使用NVMe / FC、以簡化SAN環境的管理。
+* *第7代SAN交換器架構支援。*此功能新增對新一代第7代SAN交換器的支援。
+
+
+
+
+== S3增強功能
+
+S3傳輸協定的物件儲存設備是ONTAP 更新的更新功能、可加入至整個解決方案系列。S3新增ONTAP 為畫面9.7的公開預覽、現在ONTAP 是支援完整的傳輸協定、位在畫面上9.8。
+
+S3的支援包括下列項目：
+
+* 基本放置/取得物件存取（不包括從同一個儲存區存取S3和NAS）
++
+** 不支援物件標記或ILM；若為功能豐富、遍佈全球的S3、請使用 https://www.netapp.com/data-storage/storagegrid/["NetApp StorageGRID"^]。
+
+
+* TLS 1.2加密
+* 多部份上傳
+* 可調式連接埠
+* 每個Volume有多個貯體
+* 庫位存取原則
+* S3做為NetApp FabricPool 的目標如需詳細資訊、請參閱下列資源：
+* https://soundcloud.com/techontap_podcast/episode-268-netapp-fabricpool-and-s3-in-ontap-98["《Sode Podcast：第268集》-《NetApp》、《NetApp》、《S3》、《支援》、《支援與支援》Tech OnTap FabricPool ONTAP"^]
+* https://www.netapp.com/us/media/tr-4814.pdf["SS3 ONTAP"^]
+
+
+link:ontap98fo_storage_efficiencies.html["下一步：儲存效率"]

@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+keywords: TR-4894, Introduction, NAS, SAN, S3, Snapshot, SnapMirror, SnapVault, HA 
+summary: NetApp ONTAP 支援業界領先的旗艦級資料管理軟體、無論是內部部署、邊緣或雲端、您都能無縫管理及保護資料。 
+---
+= TR-4894：NetApp ONTAP 《NetApp產品特色概述》
+:allow-uri-read: 
+
+
+NetApp的Justin Parisi
+
+NetApp ONTAP 支援業界領先的旗艦級資料管理軟體、無論是內部部署、邊緣或雲端、您都能無縫管理及保護資料。
+
+NetApp ONTAP 支援下列功能、全都在同一個平台上：
+
+* NAS傳輸協定（NFS和SMB）
+* SAN傳輸協定（iSCSI、FCP及NVMe）
+* S3資料存取
+* 資料保護（NetApp Snapshot複本、NetApp SnapMirror及SnapVault 各種技術）
+* 儲存效率（重複資料刪除、壓縮及壓縮）
+* 高可用度（HA）容錯移轉（包括使用All SAN Array的第1層SAN的快速容錯移轉）
+* 支援All Flash、旋轉式磁碟機和混合式磁碟組態
+* 安全功能（多因素驗證、NetApp Volume Encryption和Secure清除）
+
+
+這不是一份完整的清單、如果我們包含ONTAP 了由NetApp提供的每一項功能、這份文件將會有上百頁長！
+
+如需更多關於NetApp ONTAP 的詳細資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/7413-ds-3231.pdf["資料管理軟體資料表ONTAP"^] 以及產品文件。

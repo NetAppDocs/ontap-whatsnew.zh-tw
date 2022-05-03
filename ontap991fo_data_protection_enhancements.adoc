@@ -1,0 +1,136 @@
+---
+sidebar: sidebar 
+permalink: ontap991fo_data_protection_enhancements.html 
+keywords: replication, failover, disaster recovery, dr, synchronous, backup, archive 
+summary: 本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。 
+---
+= 資料保護增強功能
+:allow-uri-read: 
+
+
+本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。
+
+
+
+== 透過SnapMirror營運不中斷、實現SAN的透明應用程式容錯移轉
+
+NetApp SnapMirror是領先業界的複寫技術、可用於多種使用案例、包括：
+
+* 災難恢復功能可在中斷期間快速進行站台容錯移轉、並快速重新同步回主要站台
+* 同步複寫功能可在遠端站台上執行資料的最長至秒複本
+* 備份與歸檔使用案例（目的地上的Snapshot複本數量比來源多）
+
+
+https://docs.netapp.com/us-en/ontap/smbc/["SnapMirror營運不中斷ONTAP"^] 延伸SnapMirror提供的功能、並提供快速、簡單的同步SnapMirror關係自動容錯移轉、以提供應用程式層級的精細資料保護。
+
+SnapMirror營運不中斷使用中介器來維護站台之間的仲裁、並在站台故障時避免發生腦分割情形。全新ONTAP 的《支援者》軟體版本（1.2）現已推出、可支援多達10 ONTAP 個的支援系統、並可在故障後120秒內自動切換各個站台的應用程式。
+
+image:ontap991fo_image11.png["錯誤：缺少圖形影像"]
+
+
+
+== 透過IP的MetroCluster
+
+NetApp MetroCluster 功能（MC）軟體是結合陣列式叢集與同步複寫的解決方案、以最低成本提供持續可用度、零資料遺失。由於消除了通常與主機型叢集相關的相依性與複雜度、因此更容易管理陣列型叢集。
+
+image:ontap991fo_image12.png["錯誤：缺少圖形影像"]
+
+此功能可在每筆交易的基礎上、立即複製所有任務關鍵型資料、讓您不中斷地存取應用程式和資料。MetroCluster不像標準資料複寫解決方案、MetroCluster 它能與主機環境無縫搭配運作、提供持續的資料可用度、同時免除建立及維護複雜容錯移轉指令碼的需求。
+
+有了這個功能、您可以執行下列工作：MetroCluster
+
+* 透過透明的切換功能、防止硬體、網路或站台故障
+* 避免計畫性和非計畫性停機、以及變更管理
+* 在不中斷營運的情況下升級硬體和軟體
+* 部署時不需複雜的指令碼、應用程式或作業系統相依性
+* 實現VMware、Microsoft、Oracle、SAP或任何關鍵應用程式的持續可用度
+
+
+NetApp MetroCluster 功能傳統上是以Fibre Channel後端來實作、但ONTAP 更新版本的支援後端使用IP網路。這不僅能降低站台容錯移轉基礎架構的成本與複雜度、也能將MetroCluster 整個範圍擴展到約700公里（或300英里）。
+
+將下列功能提升至更強大的功能。ONTAP MetroCluster
+
+* 將每個HA配對的Volume數增加至1600
+* 共享的第3層網路
++
+** 不再依賴專屬的第2層網路
+** 必須直接連線至路由器ONTAP
+** 不支援動態路由
+
+
+* 每個站台增加節點數（每個站台四個、每個叢集八個）
+
+
+
+
+=== 選擇MetroCluster 不使用SnapMirror的時機與SnapMirror營運不中斷
+
+由於SnapMirror和SnapMirror業務連續性共享一些相同的功能集（能夠充分利用現有IP網路、自動化容錯移轉、同步複寫）、因此「我應該何時使用每個功能」的問題變得更加相關。MetroCluster
+
+答案取決於下列問題。
+
+* 您的服務層級目標為何？
+* 您希望容錯移轉的精細程度如何？
+
+
+支援SAN與NAS工作負載的HA配對與實體集合體、可自動進行基礎架構容錯移轉、而SnapMirror營運不中斷則僅針對SAN工作負載提供應用程式層級的精細度。MetroCluster
+
+如需MetroCluster 有關透過IP進行的詳細資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/13481-tr4689pdf.pdf["SIP解決方案架構與設計MetroCluster"^]。
+
+如需SnapMirror營運不中斷的詳細資訊、請參閱 https://docs.netapp.com/us-en/ontap/smbc/["SnapMirror營運不中斷ONTAP"^]。
+
+
+
+== 提供大量資料保護FlexGroup
+
+NetApp的VMware不間斷橫向擴充NAS解決方案可在單一命名空間中提供高達20PB和4000億個檔案、同時針對高擷取工作負載提供自動負載平衡的平行處理功能、將容量、效能和簡易性完美結合。FlexGroup ONTAP
+
+image:ontap991fo_image13.png["錯誤：缺少圖形影像"]
+
+如需FlexGroup 更多有關本功能的資訊、請參閱 https://www.netapp.com/us/media/tr-4571.pdf["TR-4571：NetApp FlexGroup 《NetApp全區最佳實務做法》"^]。
+
+在供應支援各種資料保護組態的供應器中、ONTAP FlexGroup
+
+
+
+=== 串聯和連出SnapMirror
+
+SnapMirror串聯可讓儲存管理員複寫至多個序列站台。例如、站台A可以複寫到站台B（內部部署或雲端）、站台B則可以將相同的磁碟區複寫到站台C（內部部署或雲端）。
+
+image:ontap991fo_image14.png["錯誤：缺少圖形影像"]
+
+SnapMirror連出可從來源磁碟區複寫到多個目的地磁碟區。因此站台A可以將來源FlexGroup 的資料複寫到站台B和C（內部部署或雲端）。如此可在資料保護組態中提供更多靈活度與恢復能力。
+
+image:ontap991fo_image15.png["錯誤：缺少圖形影像"]
+
+
+
+=== 儲存虛擬機器災難恢復（SVM-DR）
+
+SVM-DR ONTAP 是一項功能、可讓您將資料磁碟區複寫到遠端站台、也可複寫SVM組態詳細資料、例如CIFS共用、NFS匯出、資料生命期、甚至NFS檔案處理、以避免容錯移轉到DR站台時重新掛載。
+
+image:ontap991fo_image16.png["錯誤：缺少圖形影像"]
+
+支援SVM-DR的SVM9.9.1可支援下列功能：ONTAP FlexGroup
+
+* 不FabricPool 支援支援
+* 沒有FlexClone
+* 無SnapMirror連出
+* 無需FlexVol 重新基準即可進行任何還原轉換
+
+
+
+
+== 更新功能SnapLock
+
+https://www.netapp.com/data-protection/ontap-security/snaplock-compliance/["NetApp SnapLock"^] 是NetApp的WORM法規遵循複寫解決方案。它為需要遵守HIPAA、SEC 17A-4f規則、FINRA和CFTC等法規準則的工作負載提供整合式資料保護、以及德國語國家（DACH）的國家要求。
+
+支援資料完整性與保留、讓電子記錄既不可更改、也能快速存取。SnapLock通過認證的資料保留功能可滿足嚴格的記錄保留要求、並可滿足一組擴充的保留要求、包括「合法保留」、「事件型保留」及「Volume附加模式」SnapLock 。
+
+針對NetApp產品特色、支援下列功能改良功能：ONTAP SnapLock
+
+* https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-concepts%2FGUID-8A8108CF-499A-46FC-917F-A40FAD68C8D6.html["儲存效率"^] 支援WORM磁碟區。支援資料壓實、跨Volume / Aggregate層級的重複資料刪除（AFF 僅限英文）、持續區段清理、以及溫度敏感的儲存效率。
+* 包含LUN快照複本的勒索軟體保護SnapLock 功能。如需SnapLock 更多有關VMware的資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf["符合法規的WORM儲存設備、採用NetApp SnapLock 技術"^]。
+
+
+如需SnapLock 更多關於功能的資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf["符合法規的WORM儲存設備、採用NetApp SnapLock 技術"^]。

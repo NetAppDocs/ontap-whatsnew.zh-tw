@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: ontap98fo_technical_resources.html 
+keywords:  
+summary: 本頁提供ONTAP 各種與《支援》9.8相關的技術資源連結。 
+---
+= 技術資源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+本節涵蓋詳細說明本文件所述功能的可用技術資源。
+
+
+
+== 技術報告
+
+* TR-4067：NetApp ONTAP 《Sure NFS最佳實務做法與實作指南》
++
+https://www.netapp.com/us/media/tr-4067.pdf["https://www.netapp.com/us/media/tr-4067.pdf"^]
+
+* TR-4375：MetroCluster 適用於4329.7的FFC ONTAP
++
+https://www.netapp.com/us/media/tr-4375.pdf["https://www.netapp.com/us/media/tr-4375.pdf"^]
+
+* TR-4569：ONTAP 《資訊安全強化指南》（英文）9
++
+https://www.netapp.com/pdf.html?item=/media/10674-tr4569pdf.pdf["https://www.netapp.com/pdf.html?item=/media/10674-tr4569pdf.pdf"^]
+
+* TR-4571：NetApp FlexGroup 《NetApp全區最佳實務做法》
++
+https://www.netapp.com/us/media/tr-4571.pdf["https://www.netapp.com/us/media/tr-4571.pdf"^]
+
+* TR-4597：VMware vSphere搭配ONTAP VMware
++
+https://www.netapp.com/us/media/tr-4597.pdf["https://www.netapp.com/us/media/tr-4597.pdf"^]
+
+* TR-4598：FabricPool 《最佳實務做法》
++
+https://www.netapp.com/us/media/tr-4598.pdf["https://www.netapp.com/us/media/tr-4598.pdf"^]
+
+* TR-4678：資料保護與備份- FlexGroup 不全區
++
+https://www.netapp.com/us/media/tr-4678.pdf["https://www.netapp.com/us/media/tr-4678.pdf"^]
+
+* TR-4689：MetroCluster 《SView IP解決方案架構與設計》
++
+https://www.netapp.com/us/media/tr-4689.pdf["https://www.netapp.com/us/media/tr-4689.pdf"^]
+
+* TR-4705：NetApp MetroCluster 解決方案架構與設計
++
+https://www.netapp.com/pdf.html?item=/media/13480-tr4705pdf.pdf["https://www.netapp.com/pdf.html?item=/media/13480-tr4705pdf.pdf"^]
+
+* TR-4743：FlexCache 《不ONTAP 實的
++
+https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf["https://www.netapp.com/pdf.html?item=/media/7336-tr4743pdf.pdf"^]
+
+
+
+
+
+== Podcast
+
+* 第263集：《以虛擬化技術為特色–2020年秋季》Tech OnTap ONTAP
++
+https://soundcloud.com/techontap_podcast/episode-263-virtualization-in-ontap-fall-2020-update["https://soundcloud.com/techontap_podcast/episode-263-virtualization-in-ontap-fall-2020-update"^]
+
+* 第264集：NetApp《SnapDiff：Tech OnTap ONTAP NetApp
++
+https://soundcloud.com/techontap_podcast/episode-264-netapp-ontap-snapdiff["https://soundcloud.com/techontap_podcast/episode-264-netapp-ontap-snapdiff"^]
+
+* 第265集：NetApp SnapMirror Cloud採用ProLion技術Tech OnTap
++
+https://soundcloud.com/techontap_podcast/episode-265-netapp-snapmirror-cloud-featuring-prolion["https://soundcloud.com/techontap_podcast/episode-265-netapp-snapmirror-cloud-featuring-prolion"^]
+
+* 第266集：NetApp®系統管理程式9.8 Tech OnTap ONTAP
++
+https://soundcloud.com/techontap_podcast/episode-266-netapp-system-manager-98["https://soundcloud.com/techontap_podcast/episode-266-netapp-system-manager-98"^]
+
+* 第267集：SnapMirror營運不中斷Tech OnTap
++
+https://soundcloud.com/techontap_podcast/episode-267-snapmirror-business-continuity-sm-bc-for-ontap-98["https://soundcloud.com/techontap_podcast/episode-267-snapmirror-business-continuity-sm-bc-for-ontap-98"^]
+
+

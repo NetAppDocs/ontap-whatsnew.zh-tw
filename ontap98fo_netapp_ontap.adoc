@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: ontap98fo_netapp_ontap.html 
+keywords: TR-4872, 4872, introduction, NAS, SAN, NFS, SMB, S3, HA 
+summary: 本頁概述ONTAP 了有關更新功能的資訊、並提供連結以取得更多資訊。 
+---
+= TR-4872：NetApp ONTAP 產品介紹9.8功能總覽
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+NetApp的Justin Parisi
+
+NetApp ONTAP 支援業界領先的NetApp旗艦級資料管理軟體、無論資料位於內部部署、邊緣或雲端、都能無縫管理及保護資料。
+
+NetApp ONTAP 支援下列功能、全都在同一個平台上：
+
+* NAS傳輸協定（NFS和SMB）
+* SAN傳輸協定（iSCSI、FCP及NVMe）
+* S3資料存取
+* 資料保護（NetApp Snapshot複本、NetApp SnapMirror及SnapVault 各種技術）
+* 儲存效率（重複資料刪除、壓縮及壓縮）
+* 高可用度（HA）容錯移轉（包括使用All SAN Array的第1層SAN的快速容錯移轉）
+* 支援All Flash、旋轉式磁碟機和混合式磁碟組態
+* 安全功能（多因素驗證、NetApp Volume Encryption和Secure清除）
+
+
+這不是一份完整的清單、如果我們包含ONTAP 了所有的功能、這份文件將會有上百頁長。
+
+如需更多關於NetApp ONTAP 的詳細資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/7413-ds-3231.pdf["資料管理軟體資料表ONTAP"^] 和 https://docs.netapp.com/ontap-9/index.jsp["產品文件"^]。
+
+請查看這項資訊 link:https://tv.netapp.com/detail/video/6211778986001["影片"] 從2020年NetApp Insight 開始、您將更廣泛地瞭解決NetApp ONTAP 方面的重大進展。
+
+link:ontap98fo_simplicity_enhancements.html["下一步：簡易性增強功能"]

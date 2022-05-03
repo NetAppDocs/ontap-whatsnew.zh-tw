@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: ontap991fo_san_enhancements.html 
+keywords: SAN array, ASA, Scale out, NVMe/FC, NVMe over Fibre Channel 
+summary: 支援某些重要的SAN相關增強功能。ONTAP本節涵蓋這些功能、並提供進一步詳細說明的文件連結。 
+---
+= SAN增強功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+支援某些重要的SAN相關增強功能。ONTAP本節涵蓋這些功能、並提供進一步詳細說明的文件連結。
+
+
+
+== 所有SAN陣列增強功能
+
+介紹的部分為ONTAP https://www.netapp.com/pdf.html?item=/media/10379-tr4515pdf.pdf["所有SAN陣列"^] （僅供參考）NetApp產品組合。ASA在本次活動中、我們看到一些令人夢寐以求的新功能。ONTAP ASA
+
+
+
+=== 從兩個節點橫向擴充至12個節點
+
+在執行本產品的過程中、不只是一個雙節點叢集。ONTAP ASA不過ONTAP 、位於VMware的SAN叢集最多可擴充至12個節點、可在企業SAN環境中提供額外的橫向擴充效能與容量。現在、只要叢集中的所有節點都具備不必要特性、即可在單一叢集中擴充多達12個節點。ASA ASA可在同一個叢集中混合使用各種機型（例如、雙節點A400 HA配對與雙節點A800 HA配對）ASA 。
+
+
+
+=== 支援NVMe / FC
+
+現在、這個功能可以利用支援速度超低的NVMe over Fibre Channel技術、只需執行部分即可。ASA ONTAP所需的只是NVMe / FC和32GB FC目標介面卡的授權。
+
+
+
+=== 就地轉換、從AFF 支援整合式SAN轉換ASA 為不支援
+
+在指令碼和NetApp TME或專業服務資源的協助下、您可以將現有AFF 的還原SAN叢集轉換成ASA 可視化的特性、而不需要移轉資料。唯一的先決條件是、如果叢集正在處理任何NAS或S3資料、則在轉換之前、應該先移除這些傳輸協定和資料集。
+
+
+
+== 單一LUN效能
+
+透過將SCSI堆疊平行化至LUN、可大幅改善尖峰工作負載的單一LUN效能、而VMware的支援平台和SAN叢集都能從變更中獲益。ASA AFF ONTAP
+
+下表針對A800平台和A300平台進行測試、比較單一LUN工作負載的效能、讀取效能將近4倍AFF 、而針對同一工作負載進行寫入時、ONTAP 效能提升75%。ONTAP
+
+|===
+| 平台 | 隨機讀取尖峰IOPS | 隨機寫入尖峰IOPS 
+
+
+| A800 | +393% | +75% 
+
+
+| A300 | +245% | +3.5% 
+|===
+
+NOTE: 這些改善不會影響多LUN應用程式（例如邏輯Volume Manager）。
+
+
+
+== NVMe over Fibre Channel增強功能
+
+在供應支援支援支援的支援範圍內、NVMe over Fibre Channel命名空間現在可以透過非使用中的遠端路徑進行容錯移轉、為NVMe / FC應用程式提供更高的整體恢復能力。ONTAP
+
+image:ontap991fo_image10.png["錯誤：缺少圖形影像"]
+
+此外、藉由vCenter提供vVol支援和命名空間配置、功能更可支援使用VMware虛擬化工作負載的NVM/FC。ONTAP

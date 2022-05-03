@@ -1,0 +1,167 @@
+---
+sidebar: sidebar 
+permalink: ontap991fo_system_manager_enhancements.html 
+keywords: functionality, capacity display, enhancements, NVMe over Fibre Channel, 
+summary: 在更新版中、我們收集了客戶的意見反應、並解決了GUI的一些疑慮、並重新加入了一些遺漏的功能、以及新增和改善的功能。ONTAP 
+---
+= System Manager增強功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+更新版的圖形化使用者介面體驗ONTAP 於ONTAP 更新版的功能介紹於更新版、您可能已經注意到有些東西已經搬移或不再供應。在更新版中、我們收集了客戶的意見反應、並解決了GUI的一些疑慮、並重新加入了一些遺漏的功能、以及新增和改善的功能。ONTAP下一節將說明其中一些變更和新增項目。您也可以在中找到System Manager的相關資訊 https://docs.netapp.com/us-en/ontap/index.html["System Manager文件"^]。
+
+
+
+== 功能已還原/使用性增強
+
+您提出要求、我們也傾聽您的心聲。在產品中、部分功能已不再於《支援》中提供、但在《支援》中、我們將這些功能加入到產品中。ONTAP ONTAP此外、還加入了新的使用性增強功能。
+
+
+
+=== 在Volume資源配置期間手動選擇本機層/集合體
+
+System Manager 9.9.1可讓您手動選取要在資源配置新磁碟區時使用的實體儲存層、包括在FlexGroup 建立實體磁碟區時指定集合體的功能。或者、ONTAP 您仍可根據平衡的放置邏輯、允許使用Sytricity和System Manager進行選擇。
+
+
+
+=== 容量顯示增強功能
+
+現在、您可以在ONTAP 不使用Snapshot複本的情況下、檢視Snapshot複本的邏輯已用空間、以及查看儲存效率比率如何。
+
+下圖說明ONTAP 《現象系統管理程式》9.9.1的容量檢視。
+
+image:ontap991fo_image1.jpeg["錯誤：缺少圖形影像"]
+
+
+
+=== NVMe over Fibre Channel–LIF建立
+
+有了System Manager、您現在可以建立及檢視NVMe over Fibre Channel命名空間所使用的LIF、包括連接埠狀態、非對稱連接埠選擇、以及查看每個連接埠所建立的LIF數量、以避免實體網路介面過載。
+
+
+
+=== EMS事件檢視器–儀表板
+
+為了更快檢視ONTAP 您的叢集可能出現的問題、System Manager 9.9.1會在您第一次登入時、在儀表板上新增EMS事件。這包括過去24小時內發生的錯誤、例如磁碟毀損、網路連結中斷、授權問題、以及機櫃或節點錯誤。
+
+您也會收到過去24小時的警告、包括故障的Volume移動和健全狀況監控警示。
+
+
+
+=== Snapshot大小和SnapMirror標籤
+
+從System Manager的Snapshot視圖中、您可以看到SnapMirror Snapshot複本上的Snapshot大小和標籤（例如每日、每週等）。
+
+image:ontap991fo_image2.png["錯誤：缺少圖形影像"]
+
+
+
+=== 重新主頁資料生命量
+
+在容錯移轉期間或網路中斷解決之後、資料生命期通常會保留在容錯移轉連接埠上、這可能會造成效能和恢復能力方面的潛在顧慮。如果您需要簡單的方法將這些資料生命體傳回原位、System Manager 9.9.1現在提供單鍵方法、可將所有資料生命體傳回目標主連接埠。
+
+
+
+=== 要顯示/隱藏的新Volume欄位
+
+您也可以透過「顯示/隱藏」按鈕、在System Manager 9.9.1中檢視Volume資訊、包括本機層級和可用/已用資訊。
+
+下圖說明ONTAP 了《不景系統管理程式》9.9中的新Volume視圖。1.
+
+image:ontap991fo_image3.png["錯誤：缺少圖形影像"]
+
+
+
+=== 大量作業
+
+如果您需要執行多個磁碟區移動或刪除、將多個LUN對應至啟動器群組、或是將多個磁碟區新增至雲端層、您現在可以選取多個物件並執行工作。磁碟區刪除也能在單一視窗中卸載、離線及確認刪除作業。
+
+下圖說明ONTAP 了在《現象系統管理程式》9.9.1中簡化的Volume刪除作業。
+
+image:ontap991fo_image4.png["錯誤：缺少圖形影像"]
+
+
+
+== 整合Active IQ
+
+為了讓ONTAP 支援服務的使用者擁有單一存取點來存取多個資訊來源、System Manager 9.9.1提供與NetApp Active IQ 支援解決方案的整合。這不僅提供韌體建議、也提供直接從NetApp支援網站下載映像的方法、而且當您想要查看叢集的運作情況時、也能輕鬆存取支援案例檢視。只要瀏覽左側功能表中叢集下方的支援連結、然後以Active IQ VMware登錄叢集即可開始。
+
+下圖描述Active IQ 了《系統管理程式》9.9.1中的「參考資料」ONTAP 。
+
+image:ontap991fo_image5.png["錯誤：缺少圖形影像"]
+
+
+
+== 硬體視覺化平台擴充
+
+硬體視覺化包括平台模型、序號、接管/恢復狀態、磁碟狀態、連接埠資訊等資訊。支援更多平台、可支援硬體視覺化、包括所有目前的各種支援平台。ONTAP AFF
+
+image:ontap991fo_image6.png["錯誤：缺少圖形影像"]
+
+下列元件在ONTAP 支援下列功能的方面、請參閱《e.9.9.1：
+
+* *平台。* C190 / A220 / A250 / A300 / A400 / A700 / A700s / A800 / A320 / FAS500f
+* *磁碟櫃。* DS4243 / DS4486 / DS212C / DS2246 / DS224C / NS224
+* *網路交換器。* Cisco Nexus 3232C / Cisco Nexus 9336C-FX2
+
+
+
+
+== Ansible教戰手冊工作流程
+
+越來越多的企業開始使用Ansible等應用程式來自動化日常工作、以提供可重複且無錯誤的工作流程。NetApp擁有完整的Ansible教戰手冊庫、您可以在中找到這些和更多資訊 https://www.netapp.com/devops-solutions/ansible/["Ansible for NetApp頁面"^]。
+
+System Manager 9.9.1新增其他使用Ansible的方法、只要按一下滑鼠就能產生教戰手冊。若要使用這些教戰手冊、請安裝Ansible和NetApp Collection from https://galaxy.ansible.com/netapp/ontap["Ansible Galaxy"^]，但您可以在System Manager中的選定儲存資源配置工作上按一下「儲存至可執行教戰手冊」連結，開始建立教戰手冊。
+
+image:ontap991fo_image7.png["錯誤：缺少圖形影像"]
+
+按一下該按鈕可建立一個內含Ansible所需.yaml檔案的.Zip檔案。
+
+image:ontap991fo_image8.png["錯誤：缺少圖形影像"]
+
+
+
+== 檔案系統分析增強功能
+
+在高檔案數環境中、若要尋找資料夾容量、資料存留時間及檔案數等資訊、通常需要透過NAS傳輸協定（例如「ls」、「du」、「Find」和「sat」）執行序列作業的時間密集命令或指令碼。
+
+支援低衝擊的掃描儀、管理員可透過此功能、快速輕鬆地在任何NAS儲存磁碟區中找出檔案系統資訊。ONTAP這款掃瞄器會在ONTAP 背景中以低優先順序工作來抓取這個功能、並在您瀏覽至已啟用此功能的磁碟區時、立即提供豐富的資訊。
+
+啟用 https://docs.netapp.com/us-en/ontap/concept_nas_file_system_analytics_overview.html["檔案系統分析"^] 就像瀏覽到您要掃描的Volume一樣簡單。移至「Storage（儲存設備）」>「Volumes（磁碟區）」、然後使用搜尋功能來尋找所需的磁碟區。按一下磁碟區、然後按一下「檔案總管」索引標籤。
+
+您可在此頁面右側看到「啟用分析」連結。
+
+image:ontap991fo_image9.png["錯誤：缺少圖形影像"]
+
+按一下「啟用」後、掃描器就會啟動。完成時間取決於磁碟區中的物件數量、以及系統負載。完成之後、您會看到系統管理員檢視中已填入整個目錄結構。此檢視可向下導覽目錄樹狀結構、並提供歷程記錄資訊、目錄大小資訊及檔案大小的存取權限。
+
+例如、根據檔案或目錄名稱篩選及執行功能、即可進一步增強功能ONTAP https://docs.netapp.com/us-en/ontap/task_nas_file_system_analytics_take_corrective_action.html["快速目錄刪除"^]。
+
+
+
+== 其他System Manager 9.9.1增強功能
+
+功能9. ONTAP9.1也為System Manager帶來下列增強功能：
+
+|===
+|  |  
+
+
+ a| 
+* 巢狀igroup
+* SnapMirror Cloud -備份與還原（ONTAP 僅適用於S3和StorageGRID 不支援
+* 所有SAN陣列擴充
+* 以供預先填入、DR、檢視頻寬節約效益FlexCache
+
+ a| 
+* SVM-DR for FlexGroup Sfe-volume
+* SnapMirror串聯和連出支援FlexGroup 以支援不支援等量資料
+* 更新：調整或變更最低冷卻天數FabricPool
+
+
+|===
