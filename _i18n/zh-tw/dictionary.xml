@@ -327,7 +327,6 @@
   <block id="8196dcbf9586cd0081ca8c94d6eec4ad" category="list-text">支援<block ref="d0daefdc677909f35162a0118f978227" category="inline-link-rx"></block> 儲存設備</block>
   <block id="ac66e55267029225d12d67c48e998acc" category="list-text">改善對vVols的支援、包括增強的SAN vVol重新平衡命令、以及儲存功能設定檔的增強功能。如需最新VMware虛擬化支援的詳細資訊、請參閱下列資源：</block>
   <block id="e4c4075a8c06d40ae4b59e37bb084cef" category="list-text"><block ref="e4c4075a8c06d40ae4b59e37bb084cef" category="inline-link-rx"></block></block>
-  <block id="ef5bb91ba96e022044cd2c0d3c47544b" category="list-text"><block ref="ef5bb91ba96e022044cd2c0d3c47544b" category="inline-link-rx"></block></block>
   <block id="87fd7f31d9bf69ec56403c0396257a5f" category="summary">本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。</block>
   <block id="d2d40d9589bc0006ef3df0199edcc583" category="doc">資料保護增強功能</block>
   <block id="398bd26e5b9faf8ca653d4ea7d28bddf" category="section-title">透過SnapMirror營運不中斷、實現SAN的透明應用程式容錯移轉</block>
@@ -601,4 +600,6 @@
   <block id="e10e59ff9a39fe83b615d336f0436894" category="paragraph"><block ref="e10e59ff9a39fe83b615d336f0436894" category="inline-link-rx"></block></block>
   <block id="7eb11865313a79b30293e6f823bc7459" category="sidebar">NetApp ONTAP 產品特色概述</block>
   <block id="bebab3b123211d2c00c685855ec9b053" category="sidebar">NetApp ONTAP 產品特色概述</block>
+  <block id="952fd691754e388c7b7ba473cf410aff" category="inline-link">TR-4597：VMware vSphere ONTAP for VMware</block>
+  <block id="541370c778951fff2e4cbe905d65b0ec" category="list-text"><block ref="541370c778951fff2e4cbe905d65b0ec" category="inline-link-rx"></block></block>
 </blocks>

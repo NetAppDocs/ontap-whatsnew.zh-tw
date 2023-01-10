@@ -29,5 +29,5 @@ VMware整合與支援ONTAP 功能可透過FlexGroup 許多新功能（包括支�
 * 支援 https://tanzu.vmware.com/tanzu["VMware Tanzu"^] 儲存設備
 * 改善對vVols的支援、包括增強的SAN vVol重新平衡命令、以及儲存功能設定檔的增強功能。如需最新VMware虛擬化支援的詳細資訊、請參閱下列資源：
 * https://soundcloud.com/techontap_podcast/episode-263-virtualization-in-ontap-fall-2020-update["第263集：《以虛擬化技術為特色–2020年秋季》Tech OnTap ONTAP"^]
-* https://www.netapp.com/us/media/tr-4597.pdf["TR-4597：VMware vSphere搭配ONTAP VMware"^]
+* https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597：VMware vSphere ONTAP for VMware"^]
 
