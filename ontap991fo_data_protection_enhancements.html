@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head class="at-element-marker">
+  <title>資料保護增強功能</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="資料保護增強功能" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+	<meta property="og:description" content="本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-tw/ontap-whatsnew/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。">
+  <meta name="keywords" content=" replication, failover, disaster recovery, dr, synchronous, backup, archive"><!-- Icons -->
+  <link rel="icon" href="/zh-tw/ontap-whatsnew/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/zh-tw/ontap-whatsnew/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/zh-tw/ontap-whatsnew/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-tw/ontap-whatsnew/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/ontap-whatsnew/ontap991fo_data_protection_enhancements.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+        $(".page-nav__link").first().addClass('page-nav__link--active');
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/zh-tw/ontap-whatsnew/js/na-search.js'></script><script src='/zh-tw/ontap-whatsnew/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/zh-tw/ontap-whatsnew/js/custom-dropdown.js'></script>
+  <script src='/zh-tw/ontap-whatsnew/js/FileSaver.min.js'></script>
+  <script src='/zh-tw/ontap-whatsnew/js/jszip-utils.min.js'></script>
+  <script src='/zh-tw/ontap-whatsnew/js/jszip.min.js'></script><script src='/zh-tw/ontap-whatsnew/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor=""><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/zh-tw/ontap-whatsnew/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/tw">
+                <image id="ie-header-logo" src="/zh-tw/ontap-whatsnew/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/support-and-training/documentation/">文件</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/zh-tw/ontap-whatsnew/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">繁體中文</span>
+                    <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/ontap-whatsnew/ontap991fo_data_protection_enhancements.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/zh-tw/ontap-whatsnew/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">所有 NetApp</span>
+                    <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">支援</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">知識庫</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">訓練</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/zh-tw/ontap-whatsnew/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/zh-tw/ontap-whatsnew/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">所有文件</a>
+    </li>
+    
+    
+
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/zh-tw/ontap-whatsnew/">-->
+      ONTAP What's New
+    <!--</a>-->
+  </div>
+</div>
+
+            
+
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/zh-tw/ontap-whatsnew/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/zh-tw/ontap-whatsnew/search.html" 
+        data-type="widget"
+        data-placeholder="搜尋說明文件"
+        data-no-results-found="找不到 {query} 的結果"
+        data-did-you-mean="搜尋 {suggestion}。"
+        data-no-results-found-did-you-mean="找不到 {query} 的結果。您的意思是 {suggestion} 嗎？"
+        data-results-found="找到 {hitCount} 個結果"
+        data-error-message="發生錯誤。請再試一次。"
+        data-error-reset="重設搜尋"
+        data-sk-es-pf-indexes="" 
+        data-flavor="">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp ONTAP 產品特色概述"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-tw/ontap-whatsnew/index.html">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-whatsnew/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-whatsnew/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> NetApp ONTAP 產品特色概述</div>-->
+         NetApp ONTAP 產品特色概述
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="System Manager增強功能"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap991fo_system_manager_enhancements.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap991fo_system_manager_enhancements.html">
+        System Manager增強功能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="SAN增強功能"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap991fo_san_enhancements.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap991fo_san_enhancements.html">
+        SAN增強功能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="資料保護增強功能"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap991fo_data_protection_enhancements.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html">
+        資料保護增強功能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="其他重大新增項目"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap991fo_other_major_additions.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap991fo_other_major_additions.html">
+        其他重大新增項目
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="技術資源"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap991fo_technical_resources.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap991fo_technical_resources.html">
+        技術資源
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="NetApp ONTAP 產品特色概述"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_netapp_ontap.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/zh-tw/ontap-whatsnew/ontap98fo_netapp_ontap.html">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/zh-tw/ontap-whatsnew/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/zh-tw/ontap-whatsnew/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> NetApp ONTAP 產品特色概述</div>-->
+         NetApp ONTAP 產品特色概述
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="簡易性增強功能"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_simplicity_enhancements.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_simplicity_enhancements.html">
+        簡易性增強功能
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="資料傳輸協定"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_data_protocols.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_data_protocols.html">
+        資料傳輸協定
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="儲存效率"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_storage_efficiencies.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_storage_efficiencies.html">
+        儲存效率
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="資料保護"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_data_protection.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_data_protection.html">
+        資料保護
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="VMware虛擬化"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_vmware_virtualization.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_vmware_virtualization.html">
+        VMware虛擬化
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="技術資源"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/ontap991fo_data_protection_enhancements.html" 
+      dale-entry-url="/ontap98fo_technical_resources.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/zh-tw/ontap-whatsnew/ontap98fo_technical_resources.html">
+        技術資源
+      </a></li></ul></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/zh-tw/ontap-whatsnew"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/zh-tw/ontap-whatsnew"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/zh-tw/ontap-whatsnew/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> 本繁體中文版使用機器翻譯，譯文僅供參考，若與英文版本牴觸，應以英文版本為準。 </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">資料保護增強功能</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2022-05-03 10:32:08 +0000">05/03/2022</time>
+        
+    
+    
+        <span>貢獻者
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/zh-tw/ontap-whatsnew/images/discuss-sm.svg" alt="" class="github-icon" />建議變更</span>
+        <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/ontap-whatsnew.zh-tw/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/zh-tw/ontap-whatsnew/ontap991fo_data_protection_enhancements.html&page-title=資料保護增強功能" class="page-nav-contribute-link" role="button">請求文件變更</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/ontap-whatsnew/blob/main/ontap991fo_data_protection_enhancements.adoc" class="page-nav-contribute-link" role="button">編輯本頁</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >瞭解如何貢獻</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/zh-tw/ontap-whatsnew/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/zh-tw/ontap-whatsnew/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/zh-tw/ontap-whatsnew/pdfs/fullsite-sidebar/TR_4894_NetApp_ONTAP__NetApp產品特色概述_.pdf" >
+                    <img src="/zh-tw/ontap-whatsnew/images/pdf-icon.png" alt="" width="16" height="16"/>此文件 PDF 的網站</a>
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-whatsnew/pdfs/sidebar/NetApp_ONTAP_產品特色概述.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-whatsnew/images/pdf-icon.png" alt="" width="16" height="16"/>
+            NetApp ONTAP 產品特色概述
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/zh-tw/ontap-whatsnew/pdfs/sidebar/NetApp_ONTAP_產品特色概述.pdf" 
+            
+          >
+            <img src="/zh-tw/ontap-whatsnew/images/pdf-icon.png" alt="" width="16" height="16"/>
+            NetApp ONTAP 產品特色概述
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/zh-tw/ontap-whatsnew/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>個別的 PDF 文件集合<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>本文件內容中的資料保護、是指異地資料複寫的概念、以及自動化站台基礎架構容錯移轉。本節說明ONTAP 更新的資料保護功能、以利執行更新以利執行更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="透過snapmirror營運不中斷實現san的透明應用程式容錯移轉">透過SnapMirror營運不中斷、實現SAN的透明應用程式容錯移轉</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp SnapMirror是領先業界的複寫技術、可用於多種使用案例、包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>災難恢復功能可在中斷期間快速進行站台容錯移轉、並快速重新同步回主要站台</p>
+</li>
+<li>
+<p>同步複寫功能可在遠端站台上執行資料的最長至秒複本</p>
+</li>
+<li>
+<p>備份與歸檔使用案例（目的地上的Snapshot複本數量比來源多）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.netapp.com/us-en/ontap/smbc/" target="_blank" rel="noopener">"SnapMirror營運不中斷ONTAP"</a> 延伸SnapMirror提供的功能、並提供快速、簡單的同步SnapMirror關係自動容錯移轉、以提供應用程式層級的精細資料保護。</p>
+</div>
+<div class="paragraph">
+<p>SnapMirror營運不中斷使用中介器來維護站台之間的仲裁、並在站台故障時避免發生腦分割情形。全新ONTAP 的《支援者》軟體版本（1.2）現已推出、可支援多達10 ONTAP 個的支援系統、並可在故障後120秒內自動切換各個站台的應用程式。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image11.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="透過ip的metrocluster">透過IP的MetroCluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp MetroCluster 功能（MC）軟體是結合陣列式叢集與同步複寫的解決方案、以最低成本提供持續可用度、零資料遺失。由於消除了通常與主機型叢集相關的相依性與複雜度、因此更容易管理陣列型叢集。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image12.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+<div class="paragraph">
+<p>此功能可在每筆交易的基礎上、立即複製所有任務關鍵型資料、讓您不中斷地存取應用程式和資料。MetroCluster不像標準資料複寫解決方案、MetroCluster 它能與主機環境無縫搭配運作、提供持續的資料可用度、同時免除建立及維護複雜容錯移轉指令碼的需求。</p>
+</div>
+<div class="paragraph">
+<p>有了這個功能、您可以執行下列工作：MetroCluster</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>透過透明的切換功能、防止硬體、網路或站台故障</p>
+</li>
+<li>
+<p>避免計畫性和非計畫性停機、以及變更管理</p>
+</li>
+<li>
+<p>在不中斷營運的情況下升級硬體和軟體</p>
+</li>
+<li>
+<p>部署時不需複雜的指令碼、應用程式或作業系統相依性</p>
+</li>
+<li>
+<p>實現VMware、Microsoft、Oracle、SAP或任何關鍵應用程式的持續可用度</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>NetApp MetroCluster 功能傳統上是以Fibre Channel後端來實作、但ONTAP 更新版本的支援後端使用IP網路。這不僅能降低站台容錯移轉基礎架構的成本與複雜度、也能將MetroCluster 整個範圍擴展到約700公里（或300英里）。</p>
+</div>
+<div class="paragraph">
+<p>將下列功能提升至更強大的功能。ONTAP MetroCluster</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>將每個HA配對的Volume數增加至1600</p>
+</li>
+<li>
+<p>共享的第3層網路</p>
+<div class="ulist">
+<ul>
+<li>
+<p>不再依賴專屬的第2層網路</p>
+</li>
+<li>
+<p>必須直接連線至路由器ONTAP</p>
+</li>
+<li>
+<p>不支援動態路由</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>每個站台增加節點數（每個站台四個、每個叢集八個）</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="選擇metrocluster-不使用snapmirror的時機與snapmirror營運不中斷">選擇MetroCluster 不使用SnapMirror的時機與SnapMirror營運不中斷</h3>
+<div class="paragraph">
+<p>由於SnapMirror和SnapMirror業務連續性共享一些相同的功能集（能夠充分利用現有IP網路、自動化容錯移轉、同步複寫）、因此「我應該何時使用每個功能」的問題變得更加相關。MetroCluster</p>
+</div>
+<div class="paragraph">
+<p>答案取決於下列問題。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>您的服務層級目標為何？</p>
+</li>
+<li>
+<p>您希望容錯移轉的精細程度如何？</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>支援SAN與NAS工作負載的HA配對與實體集合體、可自動進行基礎架構容錯移轉、而SnapMirror營運不中斷則僅針對SAN工作負載提供應用程式層級的精細度。MetroCluster</p>
+</div>
+<div class="paragraph">
+<p>如需MetroCluster 有關透過IP進行的詳細資訊、請參閱 <a href="https://www.netapp.com/pdf.html?item=/media/13481-tr4689pdf.pdf" target="_blank" rel="noopener">"SIP解決方案架構與設計MetroCluster"</a>。</p>
+</div>
+<div class="paragraph">
+<p>如需SnapMirror營運不中斷的詳細資訊、請參閱 <a href="https://docs.netapp.com/us-en/ontap/smbc/" target="_blank" rel="noopener">"SnapMirror營運不中斷ONTAP"</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="提供大量資料保護flexgroup">提供大量資料保護FlexGroup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NetApp的VMware不間斷橫向擴充NAS解決方案可在單一命名空間中提供高達20PB和4000億個檔案、同時針對高擷取工作負載提供自動負載平衡的平行處理功能、將容量、效能和簡易性完美結合。FlexGroup ONTAP</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image13.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+<div class="paragraph">
+<p>如需FlexGroup 更多有關本功能的資訊、請參閱 <a href="https://www.netapp.com/us/media/tr-4571.pdf" target="_blank" rel="noopener">"TR-4571：NetApp FlexGroup 《NetApp全區最佳實務做法》"</a>。</p>
+</div>
+<div class="paragraph">
+<p>在供應支援各種資料保護組態的供應器中、ONTAP FlexGroup</p>
+</div>
+<div class="sect2">
+<h3 id="串聯和連出snapmirror">串聯和連出SnapMirror</h3>
+<div class="paragraph">
+<p>SnapMirror串聯可讓儲存管理員複寫至多個序列站台。例如、站台A可以複寫到站台B（內部部署或雲端）、站台B則可以將相同的磁碟區複寫到站台C（內部部署或雲端）。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image14.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+<div class="paragraph">
+<p>SnapMirror連出可從來源磁碟區複寫到多個目的地磁碟區。因此站台A可以將來源FlexGroup 的資料複寫到站台B和C（內部部署或雲端）。如此可在資料保護組態中提供更多靈活度與恢復能力。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image15.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="儲存虛擬機器災難恢復svm-dr">儲存虛擬機器災難恢復（SVM-DR）</h3>
+<div class="paragraph">
+<p>SVM-DR ONTAP 是一項功能、可讓您將資料磁碟區複寫到遠端站台、也可複寫SVM組態詳細資料、例如CIFS共用、NFS匯出、資料生命期、甚至NFS檔案處理、以避免容錯移轉到DR站台時重新掛載。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="ontap991fo_image16.png" alt="錯誤：缺少圖形影像"></span></p>
+</div>
+<div class="paragraph">
+<p>支援SVM-DR的SVM9.9.1可支援下列功能：ONTAP FlexGroup</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>不FabricPool 支援支援</p>
+</li>
+<li>
+<p>沒有FlexClone</p>
+</li>
+<li>
+<p>無SnapMirror連出</p>
+</li>
+<li>
+<p>無需FlexVol 重新基準即可進行任何還原轉換</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="更新功能snaplock">更新功能SnapLock</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.netapp.com/data-protection/ontap-security/snaplock-compliance/" target="_blank" rel="noopener">"NetApp SnapLock"</a> 是NetApp的WORM法規遵循複寫解決方案。它為需要遵守HIPAA、SEC 17A-4f規則、FINRA和CFTC等法規準則的工作負載提供整合式資料保護、以及德國語國家（DACH）的國家要求。</p>
+</div>
+<div class="paragraph">
+<p>支援資料完整性與保留、讓電子記錄既不可更改、也能快速存取。SnapLock通過認證的資料保留功能可滿足嚴格的記錄保留要求、並可滿足一組擴充的保留要求、包括「合法保留」、「事件型保留」及「Volume附加模式」SnapLock 。</p>
+</div>
+<div class="paragraph">
+<p>針對NetApp產品特色、支援下列功能改良功能：ONTAP SnapLock</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-concepts%2FGUID-8A8108CF-499A-46FC-917F-A40FAD68C8D6.html" target="_blank" rel="noopener">"儲存效率"</a> 支援WORM磁碟區。支援資料壓實、跨Volume / Aggregate層級的重複資料刪除（AFF 僅限英文）、持續區段清理、以及溫度敏感的儲存效率。</p>
+</li>
+<li>
+<p>包含LUN快照複本的勒索軟體保護SnapLock 功能。如需SnapLock 更多有關VMware的資訊、請參閱 <a href="https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf" target="_blank" rel="noopener">"符合法規的WORM儲存設備、採用NetApp SnapLock 技術"</a>。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>如需SnapLock 更多關於功能的資訊、請參閱 <a href="https://www.netapp.com/pdf.html?item=/media/6158-tr4526pdf.pdf" target="_blank" rel="noopener">"符合法規的WORM儲存設備、採用NetApp SnapLock 技術"</a>。</p>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/zh-tw/ontap-whatsnew/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/zh-tw/ontap-whatsnew/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">在本頁</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2023 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">使用條款</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">隱私權政策</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie 政策</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Cookie 設定</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">傳送有關本網頁的意見反應</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-tw/ontap-whatsnew/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-tw/ontap-whatsnew/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-tw/ontap-whatsnew/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-tw/ontap-whatsnew/js/ie-tabbed-blocks.js'></script>
+    <script src='/zh-tw/ontap-whatsnew/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
