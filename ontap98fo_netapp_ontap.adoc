@@ -33,6 +33,4 @@ NetApp ONTAP 支援下列功能、全都在同一個平台上：
 
 如需更多關於NetApp ONTAP 的詳細資訊、請參閱 https://www.netapp.com/pdf.html?item=/media/7413-ds-3231.pdf["資料管理軟體資料表ONTAP"^] 和 https://docs.netapp.com/ontap-9/index.jsp["產品文件"^]。
 
-請查看這項資訊 link:https://tv.netapp.com/detail/video/6211778986001["影片"] 從2020年NetApp Insight 開始、您將更廣泛地瞭解決NetApp ONTAP 方面的重大進展。
-
 link:ontap98fo_simplicity_enhancements.html["下一步：簡易性增強功能"]
